@@ -10,27 +10,26 @@ pipeline {
 
     stage('Install Dependencies') {
       steps {
-        // Unix: sh; Windows: bat
-        sh 'npm install'
+        //Windows: bat
+        bat 'npm install'
       }
     }
 
     stage('Run Tests') {
       steps {
-        // allow failures so pipeline continues
-        sh 'npm test || true'
+        bat 'npm test || true'
       }
     }
 
     stage('Generate Coverage Report') {
       steps {
-        sh 'npm run coverage || true'
+        bat 'npm run coverage || true'
       }
     }
 
     stage('NPM Audit (Security Scan)') {
       steps {
-        sh 'npm audit || true'
+        bat 'npm audit || true'
       }
     }
   }
